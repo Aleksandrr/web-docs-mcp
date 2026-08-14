@@ -1,0 +1,50 @@
+{
+  "name": "web-docs-mcp",
+  "version": "1.0.0",
+  "description": "Local MCP server for Kilo Code: free web search + library docs fetcher. Saves markdown to ./docs/ on demand.",
+  "type": "module",
+  "main": "build/index.js",
+  "bin": {
+    "web-docs-mcp": "build/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "start": "node build/index.js",
+    "smoke": "tsx scripts/smoke.ts",
+    "clean": "rm -rf build .cache"
+  },
+  "engines": {
+    "node": ">=18.17"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "cheerio": "^1.2.0",
+    "turndown": "^7.2.4",
+    "turndown-plugin-gfm": "^1.0.2",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^26.2.0",
+    "@types/turndown": "^5.0.6",
+    "tsx": "^4.23.12",
+    "typescript": "^7.0.2"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "kilo-code",
+    "cline",
+    "roo-code",
+    "claude-desktop",
+    "web-search",
+    "duckduckgo",
+    "documentation"
+  ],
+  "license": "MIT",
+  "directories": {
+    "doc": "docs",
+    "example": "examples"
+  },
+  "author": ""
+}

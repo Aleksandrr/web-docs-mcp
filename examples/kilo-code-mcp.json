@@ -1,0 +1,24 @@
+{
+  "$schema": "https://app.kilo.ai/config.json",
+  "mcp": {
+    "web-docs": {
+      "type": "local",
+      "command": [
+        "node",
+        "/absolute/path/to/web-docs-mcp/build/index.js"
+      ],
+      "environment": {
+        "DOCS_DIR": "docs",
+        "CACHE_DIR": ".cache/web-docs",
+        "CACHE_TTL_HOURS": "168",
+        "HTTP_TIMEOUT_MS": "20000",
+        "DEFAULT_SAVE_TO_DOCS": "true",
+        "DISABLE_CACHE": "false",
+        "GITHUB_TOKEN": ""
+      },
+      "enabled": true,
+      "timeout": 60000
+    }
+  }
+}
+

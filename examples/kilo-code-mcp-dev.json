@@ -1,0 +1,19 @@
+{
+  "$schema": "https://app.kilo.ai/config.json",
+  "mcp": {
+    "web-docs": {
+      "type": "local",
+      "command": [
+        "npx",
+        "tsx",
+        "/absolute/path/to/web-docs-mcp/src/index.ts"
+      ],
+      "environment": {
+        "DOCS_DIR": "docs",
+        "CACHE_DIR": ".cache/web-docs"
+      },
+      "enabled": true,
+      "timeout": 60000
+    }
+  }
+}
