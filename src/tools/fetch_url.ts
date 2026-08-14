@@ -87,7 +87,7 @@ export async function fetchUrl(args: FetchUrlArgs): Promise<string> {
   const isHtml = /text\/html|application\/xhtml/i.test(res.contentType) ||
     /^\s*<!doctype html|<html/i.test(res.text);
   const isJson = /application\/json/i.test(res.contentType) ||
-    /^[\[{]/.test(res.text.trim());
+    /^[[{]/.test(res.text.trim());
 
   let md: string;
   if (isHtml) {

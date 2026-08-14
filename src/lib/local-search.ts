@@ -81,8 +81,9 @@ function listMarkdownFiles(dir: string): string[] {
   if (!fs.existsSync(dir)) return [];
   const out: string[] = [];
   const stack = [dir];
-  while (stack.length) {
-    const cur = stack.pop()!;
+  while (stack.length > 0) {
+    const cur = stack.pop();
+    if (!cur) continue;
     let entries: fs.Dirent[];
     try {
       entries = fs.readdirSync(cur, { withFileTypes: true });

@@ -31,7 +31,6 @@ export async function ddgSearch(
   const timer = setTimeout(() => controller.abort(), 20_000);
 
   let text: string;
-  let finalUrl = "https://html.duckduckgo.com/html/";
   try {
     const res = await fetch("https://html.duckduckgo.com/html/", {
       method: "POST",
@@ -47,7 +46,7 @@ export async function ddgSearch(
       signal: controller.signal,
     });
     text = await res.text();
-    finalUrl = res.url;
+    // finalUrl = res.url; // unused
   } catch (err) {
     clearTimeout(timer);
     throw new Error(
@@ -56,7 +55,7 @@ export async function ddgSearch(
   }
   clearTimeout(timer);
 
-  return parseDdgHtml(text, finalUrl).slice(0, limit);
+  return parseDdgHtml(text).slice(0, limit);
 }
 
 /**

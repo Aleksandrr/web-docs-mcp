@@ -21,7 +21,7 @@ import {
   VALID_SUBDIRS,
   type Doc,
 } from "../lib/local-search.js";
-import { DOCS_DIR, DOCS_SUBDIRS } from "../config.js";
+import { DOCS_DIR } from "../config.js";
 import path from "node:path";
 import fs from "node:fs";
 
@@ -126,7 +126,8 @@ export async function listDocs(args: ListDocsArgs): Promise<string> {
   const grouped = new Map<string, Doc[]>();
   for (const d of shown) {
     if (!grouped.has(d.subdir)) grouped.set(d.subdir, []);
-    grouped.get(d.subdir)!.push(d);
+    const arr = grouped.get(d.subdir);
+    if (arr) arr.push(d);
   }
   for (const [sub, items] of [...grouped.entries()].sort()) {
     const subLabel = sub || "(root)";
@@ -152,7 +153,7 @@ export async function listDocs(args: ListDocsArgs): Promise<string> {
 /** Resolve a user-supplied path/slug to a Doc and return its body. */
 function showDocByPath(userPath: string): string {
   // Strip leading "docs/" if user included it, and any .md suffix.
-  let rel = userPath.replace(/^\/+/, "").replace(/^docs\//, "").replace(/\.md$/, "");
+  const rel = userPath.replace(/^\/+/, "").replace(/^docs\//, "").replace(/\.md$/, "");
   // Try as-is first
   const candidates = [
     path.resolve(DOCS_DIR, rel + ".md"),
