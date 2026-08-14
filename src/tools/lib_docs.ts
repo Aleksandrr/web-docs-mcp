@@ -441,11 +441,16 @@ async function tryGithub(owner: string, repo: string): Promise<FetchedDoc | unde
       readme = await tryGithubReadme(owner, repo, defaultBranch).catch(() => "");
     }
     if (!readme) return undefined;
+    // If we have readme but no repoInfo, use fallback values
+    const name = repoInfo?.full_name || `${owner}/${repo}`;
+    const description = repoInfo?.description || "";
+    const homepage = repoInfo?.homepage || repoInfo?.html_url || `https://github.com/${owner}/${repo}`;
+    const repository = repoInfo?.html_url || `https://github.com/${owner}/${repo}`;
     return {
-      name: repoInfo!.full_name,
-      description: repoInfo!.description,
-      homepage: repoInfo!.homepage || repoInfo!.html_url,
-      repository: repoInfo!.html_url,
+      name,
+      description,
+      homepage,
+      repository,
       readme,
       source: "github",
       sourceUrl: `https://api.github.com/repos/${owner}/${repo}`,

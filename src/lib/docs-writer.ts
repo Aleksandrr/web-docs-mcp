@@ -67,7 +67,7 @@ function frontmatter(opts: SaveDocOptions): string {
 
 function yamlScalar(s: string): string {
   // Always quote if there's any chance of YAML misinterpretation.
-  if (/[:#\[\]{}&*!|>'"%@`,\n]/.test(s) || /^\s|\s$/.test(s)) {
+  if (/[:#[]{}&*!|>'"%@`,\n]/.test(s) || /^\s|\s$/.test(s)) {
     return `"${s.replace(/\\/g, "\\\\").replace(/"/g, '\\"')}"`;
   }
   return s;

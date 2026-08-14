@@ -21,7 +21,7 @@
  * This module implements that flow in pure Node.js, no headless browser.
  */
 import crypto from "node:crypto";
-import { fetchText } from "./fetcher.js";
+// import { fetchText } from "./fetcher.js"; // unused
 import { USER_AGENT } from "../config.js";
 
 export interface AnubisChallenge {
@@ -66,7 +66,7 @@ export function isAnubisDeny(html: string): boolean {
 }
 
 /** Extract the embedded challenge JSON from the challenge HTML. */
-export function parseAnubisChallenge(html: string, sourceUrl: string): AnubisChallenge | null {
+export function parseAnubisChallenge(html: string, _sourceUrl: string): AnubisChallenge | null {
   // The challenge data lives in a <script type="application/json" id="anubis_challenge">...</script>
   // block, but older versions embed it as textContent of a regular script tag.
   // Try JSON-LD script first, then plain text script.

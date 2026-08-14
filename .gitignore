@@ -1,10 +1,39 @@
+```
+# Dependencies
 node_modules/
+
+# Build artifacts
 build/
-.cache/
-coverage/
-.coverage
-*.log
-.DS_Store
+dist/
+
+# Environment
 .env
 .env.local
-docs/
+.env.*
+
+# Cache
+.cache/
+.nyc_output/
+coverage/
+.htmlcov/
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+.nyc_output/
+coverage/
+```
